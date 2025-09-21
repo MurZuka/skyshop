@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -45,5 +46,11 @@ public class StorageService {
 
     public Map<UUID, Article> getArticleStorage() {
         return articleStorage;
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return productStorage.values().stream()
+               .filter(p -> p.getId().equals(id))
+               .findFirst();
     }
 }
