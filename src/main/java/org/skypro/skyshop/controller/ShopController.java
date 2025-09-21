@@ -1,7 +1,6 @@
 package org.skypro.skyshop.controller;
 
 import org.skypro.skyshop.model.article.Article;
-import org.skypro.skyshop.model.basket.BasketItem;
 import org.skypro.skyshop.model.basket.UserBasket;
 import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.search.SearchResult;
@@ -18,7 +17,6 @@ import java.util.UUID;
 public class ShopController {
     private final StorageService storageService;
     private final SearchService searchService;
-
     private final BasketService basketService;
 
     public ShopController(StorageService storageService, SearchService searchService, BasketService basketService) {

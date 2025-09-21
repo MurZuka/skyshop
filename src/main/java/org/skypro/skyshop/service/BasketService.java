@@ -1,6 +1,6 @@
 package org.skypro.skyshop.service;
 
-import org.apache.catalina.User;
+import org.skypro.skyshop.error.NoSuchProductException;
 import org.skypro.skyshop.model.basket.BasketItem;
 import org.skypro.skyshop.model.basket.ProductBasket;
 import org.skypro.skyshop.model.basket.UserBasket;
@@ -20,7 +20,7 @@ public class BasketService {
 
     public void add(UUID id) {
         if (storageService.getProductById(id).isPresent() == false) {
-            throw new IllegalArgumentException("Товара с ID " + id + " нет в каталоге");
+            throw new NoSuchProductException();
         };
 
         basket.add(id);
@@ -28,7 +28,7 @@ public class BasketService {
 
     public UserBasket getUserBasket() {
         UserBasket result = new UserBasket(basket.getProducts().entrySet().stream()
-                .map(p -> new BasketItem(storageService.getProductById(p.getKey()).orElseThrow(() -> new RuntimeException()),
+                .map(p -> new BasketItem(storageService.getProductById(p.getKey()).orElseThrow(() -> new NoSuchProductException()),
                                          p.getValue()))
                 .toList());
 
