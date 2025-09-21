@@ -19,7 +19,7 @@ public class BasketService {
     }
 
     public void add(UUID id) {
-        if (storageService.getProductById(id).isPresent() == false) {
+        if (storageService.getProductById(id).isEmpty()) {
             throw new IllegalArgumentException("Товара с ID " + id + " нет в каталоге");
         };
 
