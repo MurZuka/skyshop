@@ -16,6 +16,9 @@ public class BasketService {
     public BasketService(ProductBasket basket, StorageService storageService) {
         this.basket = basket;
         this.storageService = storageService;
+
+        System.out.println("basket == null? " + basket == null);
+        System.out.println("storageService == null? " + storageService == null);
     }
 
     public void add(UUID id) {
@@ -33,6 +36,14 @@ public class BasketService {
                 .toList());
 
         return result;
+    }
+
+    public ProductBasket getBasket() {
+        return basket;
+    }
+
+    public StorageService getStorageService() {
+        return storageService;
     }
 }
 
